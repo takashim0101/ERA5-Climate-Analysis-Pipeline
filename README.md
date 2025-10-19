@@ -4,9 +4,9 @@ This project demonstrates a complete data pipeline for climate analysis, from da
 
 ## Project Overview
 
-The primary goal of this project is to showcase a practical application of data engineering and analysis skills. It answers the question: "How can we use raw climate data to understand local weather patterns?"
+This project serves as an **experimental portfolio piece** demonstrating an end-to-end data pipeline for climate analysis. It utilizes **free and open-source ERA5 reanalysis data**, known for its **high spatial resolution (0.25° x 0.25°)**, to understand local weather patterns over a **one-year period (2024)**.
 
-This portfolio piece is designed to be accessible to both technical and non-technical audiences. It highlights the ability to manage a data-centric project from end to end, a critical skill in fields like data science, climate research, and software engineering.
+The primary goal is to showcase practical application of data engineering and analysis skills, from data acquisition and processing to insightful visualization. Designed to be accessible to both technical and non-technical audiences, it highlights the ability to manage a data-centric project from end to end, a critical skill in fields like data science, climate research, and software engineering.
 
 ## How It Works: An End-to-End Pipeline
 
