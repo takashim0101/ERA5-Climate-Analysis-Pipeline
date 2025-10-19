@@ -4,7 +4,7 @@ This project demonstrates a complete data pipeline for climate analysis, from da
 
 ## Project Overview
 
-This project serves as an **experimental portfolio piece** demonstrating an end-to-end data pipeline for climate analysis. It utilizes **free and open-source ERA5 reanalysis data**, known for its **high spatial resolution (0.25° x 0.25°)**, to understand local weather patterns over a **one-year period (2024)**.
+This project serves as an **experimental portfolio piece** demonstrating an end-to-end data pipeline for climate analysis. It exclusively utilizes **free and open-source ERA5 reanalysis data** from the Copernicus Climate Data Store, distinguishing it from potentially commercial or restricted datasets (e.g., from national meteorological services like NIWA). Known for its **high spatial resolution (0.25° x 0.25°)**, this data is used to understand the climate characteristics of the **Canterbury region in New Zealand** over a **one-year period (2024)**.
 
 The primary goal is to showcase practical application of data engineering and analysis skills, from data acquisition and processing to insightful visualization. Designed to be accessible to both technical and non-technical audiences, it highlights the ability to manage a data-centric project from end to end, a critical skill in fields like data science, climate research, and software engineering.
 
@@ -27,7 +27,7 @@ The project operates in three simple stages:
 
 ## Analysis Visualizations
 
-The following plots were generated for the year 2024.
+The following plots were generated for the **Canterbury region, New Zealand**, for the year 2024. The focus on this region allows for a detailed examination of local climate patterns. For the wind speed distribution, specific cities within Canterbury (Christchurch, Timaru, Ashburton, Kaikoura) were selected to illustrate intra-regional variations.
 
 #### 1. Annual Mean 2m Temperature
 
@@ -133,7 +133,7 @@ When using this data, the following should be cited:
 The ERA5 dataset is the fifth generation ECMWF reanalysis for the global climate and weather. It combines model data with observations from across the world into a globally complete and consistent dataset using data assimilation.
 
 *   **Data Type:** Gridded
-*   **Horizontal Resolution:** 0.25° x 0.25° (atmosphere)
+*   **Horizontal Resolution:** 0.25° x 0.25° (atmosphere), approximately 28km x 21-28km in the Canterbury region.
 *   **Temporal Coverage:** 1940 to present
 *   **Temporal Resolution:** Hourly
 *   **File Format:** GRIB
