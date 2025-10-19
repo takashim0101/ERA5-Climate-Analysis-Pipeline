@@ -1,0 +1,9 @@
+cdsapi
+xarray
+numpy
+dask
+matplotlib
+cartopy
+netcdf4
+h5netcdf
+seaborn
