@@ -53,6 +53,18 @@ The following plots were generated for the **Canterbury region, New Zealand**, f
 
 **Interpretation:** This violin plot summarizes the overall distribution of 10-meter wind speed throughout the year. It reveals the most frequent wind speeds and the range of observed values, which is useful for understanding the general wind climate of the region.
 
+#### 5. Mean 2m Temperature in Canterbury
+
+[![Canterbury Mean Temperature Map](plots/canterbury_mean_temp_map.png)](plots/canterbury_mean_temp_map.png)
+
+**Interpretation:** This map focuses specifically on the Canterbury region, showing a more detailed view of the annual mean 2-meter temperature. It highlights significant temperature gradients, with cooler temperatures in the higher elevations of the Southern Alps to the west and warmer conditions along the coast and across the Canterbury Plains. This level of detail is crucial for local agricultural and ecological planning.
+
+#### 6. Annual Total Precipitation in Canterbury
+
+[![Canterbury Total Precipitation Map](plots/canterbury_total_precip_map.png)](plots/canterbury_total_precip_map.png)
+
+**Interpretation:** This map illustrates the annual total precipitation across Canterbury. A striking feature is the strong precipitation gradient caused by the Southern Alps, which creates a rain shadow effect. The western high-altitude areas receive substantial rainfall, while the Canterbury Plains to the east are significantly drier. This visualization is fundamental for water resource management, agriculture, and understanding flood or drought risk in the region.
+
 ---
 
 ## Getting Started
