@@ -160,6 +160,28 @@ The `download_era5.py` script is configured to download the following specific p
     *   East: 180°
 *   **Format:** NetCDF
 
+### Variable Selection Rationale
+
+The following variables were selected for download and analysis due to their fundamental importance in understanding regional climate and weather patterns. From these raw variables, key climate indicators are calculated to provide actionable insights:
+
+*   **2m Temperature (`2m_temperature`):**
+    *   **Why chosen:** A primary indicator of atmospheric heat content, directly impacting human comfort, agricultural conditions, and ecosystem health.
+    *   **Calculations & Utility:**
+        *   **Annual Mean Temperature Map:** Calculates the average 2m temperature over the entire year for each geographical point. This map is crucial for identifying long-term temperature patterns and regional climate zones, aiding in urban planning, agricultural suitability assessments, and understanding general climate trends.
+        *   **Monthly Temperature Distribution (Violin Plot):** Shows the distribution of 2m temperatures for each month. This helps in understanding seasonal temperature cycles, identifying temperature variability within months, and assessing the likelihood of extreme temperatures, which is vital for seasonal planning and risk management.
+
+*   **10m U-component of Wind (`10m_u_component_of_wind`) & 10m V-component of Wind (`10m_v_component_of_wind`):**
+    *   **Why chosen:** These components represent the eastward (u) and northward (v) wind velocities at 10 meters above the surface. They are fundamental for deriving total wind speed and direction.
+    *   **Calculations & Utility:**
+        *   **Wind Speed Calculation:** Total wind speed is calculated from these components using the formula `sqrt(u^2 + v^2)`.
+        *   **Monthly Mean Wind Speed (Bar Chart):** Displays the average wind speed for each month. This helps in identifying seasonal wind patterns, crucial for wind energy assessment, agricultural planning (e.g., irrigation, crop protection), and understanding local weather phenomena.
+        *   **Wind Speed Distribution (Violin Plot):** Illustrates the overall distribution of wind speeds. This provides insights into the frequency of different wind speeds, useful for structural engineering, aviation, and assessing the consistency of wind resources.
+
+*   **Total Precipitation (`total_precipitation`):**
+    *   **Why chosen:** Represents the total amount of liquid and frozen water falling to the Earth's surface, a critical component of the water cycle.
+    *   **Calculations & Utility:**
+        *   **Annual Total Precipitation Map:** Calculates the accumulated precipitation over the entire year for each geographical point. This map is vital for water resource management, agricultural planning, drought monitoring, and flood risk assessment, providing a clear picture of water availability across the region.
+
 ---
 
 ## License (for Code)

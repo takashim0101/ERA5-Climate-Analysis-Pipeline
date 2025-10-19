@@ -70,7 +70,8 @@ monthly_df['Mean_Wind_Speed'].plot(kind='bar', color='skyblue')
 plt.title('Canterbury Region Monthly Mean Wind Speed')
 plt.ylabel('Mean Wind Speed (m/s)')
 plt.xlabel('Month')
-plt.xticks(rotation=0)
+month_labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+plt.xticks(ticks=np.arange(len(month_labels)), labels=month_labels, rotation=45) # ラベルが重ならないように45度回転
 plt.grid(axis='y', linestyle='--', alpha=0.7)
 plt.tight_layout()
 monthly_wind_bar_path = "plots/monthly_wind_speed_bar.png"
@@ -147,7 +148,7 @@ canterbury_total_rainfall_map.plot.pcolormesh(
     ax=ax,
     transform=ccrs.PlateCarree(),
     cmap='Blues',
-    norm=LogNorm(),
+    # norm=LogNorm(),
     cbar_kwargs={'label': 'Total Precipitation (mm)'}
 )
 ax.coastlines()
