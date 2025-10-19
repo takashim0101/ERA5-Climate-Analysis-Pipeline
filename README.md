@@ -4,9 +4,9 @@ This project demonstrates a complete data pipeline for climate analysis, from da
 
 ## Project Overview
 
-The primary goal of this project is to showcase a practical application of data engineering and analysis skills. It answers the question: "How can we use raw climate data to understand local weather patterns?"
+This project serves as an **experimental portfolio piece** demonstrating an end-to-end data pipeline for climate analysis. It utilizes **free and open-source ERA5 reanalysis data**, known for its **high spatial resolution (0.25° x 0.25°)**, to understand local weather patterns over a **one-year period (2024)**.
 
-This portfolio piece is designed to be accessible to both technical and non-technical audiences. It highlights the ability to manage a data-centric project from end to end, a critical skill in fields like data science, climate research, and software engineering.
+The primary goal is to showcase practical application of data engineering and analysis skills, from data acquisition and processing to insightful visualization. Designed to be accessible to both technical and non-technical audiences, it highlights the ability to manage a data-centric project from end to end, a critical skill in fields like data science, climate research, and software engineering.
 
 ## How It Works: An End-to-End Pipeline
 
@@ -14,15 +14,14 @@ The project operates in three simple stages:
 
 1.  **Data Acquisition:** The `download_era5.py` script connects to the Copernicus Climate Data Store (CDS) API to automatically download hourly weather data for a specified region and time period.
 
-2.  **Analysis & Processing:** The `era5_analysis.py` script processes the raw NetCDF data files. It calculates key statistics, suchs as monthly mean temperatures and wind speeds, preparing the data for visualization.
-
-3.  **Visualization:** The script then uses libraries like Matplotlib and Cartopy to generate a series of plots and maps. These visualizations provide a clear and intuitive look at the region's climate characteristics.
+2.  **Analysis & Visualization:** The `era5_climate_analysis.py` script processes the raw NetCDF data files, calculates key climate statistics (such as monthly mean temperatures and wind speeds), and then generates a series of plots and maps using libraries like Matplotlib and Cartopy. These visualizations provide a clear and intuitive look at the region's climate characteristics.
 
 ## Key Features
 
 *   **Automated Data Download:** Fetches data directly from the official CDS API.
 *   **Climate Data Processing:** Handles standard scientific data formats (NetCDF).
 *   **Geospatial Visualization:** Creates insightful maps using Cartopy.
+
 *   **Statistical Plotting:** Generates violin plots and bar charts to show distributions and trends.
 *   **Reproducible Workflow:** The entire process is scripted for easy reproduction.
 
@@ -90,9 +89,21 @@ Follow these instructions to run the project on your local machine.
     ```
 2.  **Analyze the data and generate plots:**
     ```bash
-    python era5_analysis.py
+    python era5_climate_analysis.py
     ```
     The output plots will be saved in the `plots/` directory.
+
+---
+
+## Future Work
+
+This project is a foundation for further exploration and can be extended in several ways:
+
+*   **WRF Model Validation:** Integrate WRF (Weather Research and Forecasting) model output for direct comparison and validation against ERA5 reanalysis data.
+*   **Expanded Data Analysis:** Include additional climate variables (e.g., humidity, pressure) and derive more complex climate indices.
+*   **Interactive Visualizations:** Develop interactive plots and dashboards using libraries like Plotly or Bokeh for dynamic data exploration.
+*   **Performance Optimization:** Optimize data processing for larger datasets or longer time periods, potentially using cloud computing resources.
+*   **Automated Reporting:** Generate automated reports summarizing key findings and visualizations.
 
 ---
 
@@ -148,3 +159,9 @@ The `download_era5.py` script is configured to download the following specific p
     *   South: -50°
     *   East: 180°
 *   **Format:** NetCDF
+
+---
+
+## License (for Code)
+
+This project's code is released under the MIT License. See the [LICENSE](LICENSE) file for details.

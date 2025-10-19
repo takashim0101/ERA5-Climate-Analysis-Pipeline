@@ -47,7 +47,7 @@ ds_precip = xr.open_mfdataset(precip_files, combine='by_coords', chunks={'valid_
 era5_ds = xr.merge([ds_temp_wind, ds_precip])
 print("\nERA5 Dataset (Temp, Wind, Precip) merged and chunked for Dask.")
 
-# --- Task 1: Monthly and Annual Mean Wind Speeds ---
+# --- Monthly and Annual Mean Wind Speeds ---
 U = era5_ds['u10']
 V = era5_ds['v10']
 wind_speed = np.sqrt(U**2 + V**2)
@@ -79,7 +79,7 @@ plt.savefig(monthly_wind_bar_path)
 plt.close()
 print(f"\nMonthly wind speed bar chart saved to: {monthly_wind_bar_path}")
 
-# --- Task 2: Violin Plot for Wind Speed Distribution ---
+# --- Violin Plot for Wind Speed Distribution ---
 cities = {
     'Christchurch': [-43.53, 172.63],
     'Timaru': [-44.39, 171.27],
@@ -107,7 +107,7 @@ plt.savefig(violin_plot_path)
 plt.close()
 print(f"\nViolin plot saved to: {violin_plot_path}")
 
-# --- Task 3 & 4: Median Annual Statistics and Visualizations ---
+# --- Median Annual Statistics and Visualizations ---
 temp_celsius = era5_ds['t2m'] - 273.15
 canterbury_temp = temp_celsius.sel(latitude=slice(-43, -45), longitude=slice(170, 174))
 canterbury_annual_mean_temp_map = canterbury_temp.mean(dim='valid_time').compute()
