@@ -1,0 +1,12 @@
+# API credentials
+.cdsapirc
+
+# Python virtual environment
+/venv/
+
+# Downloaded data
+/downloaded_data/
+
+# Python bytecode
+/__pycache__/
+*.pyc
