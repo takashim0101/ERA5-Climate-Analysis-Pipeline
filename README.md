@@ -32,25 +32,25 @@ The following plots were generated for the year 2024.
 
 #### 1. Annual Mean 2m Temperature
 
-![Annual Mean Temperature Map](plots/annual_mean_temperature_map.png)
+[![Annual Mean Temperature Map](plots/annual_mean_temperature_map.png)](plots/annual_mean_temperature_map.png)
 
 **Interpretation:** This map displays the spatial distribution of the annual mean 2-meter temperature. It allows for a quick visual assessment of temperature variations across the geographical domain. In this analysis, we can observe trends such as higher temperatures at lower latitudes. This kind of map is fundamental in climate studies to identify regional temperature patterns.
 
 #### 2. Monthly 2m Temperature Distribution
 
-![Monthly Temperature Distribution](plots/monthly_temperature_violin.png)
+[![Monthly Temperature Distribution](plots/monthly_temperature_violin.png)](plots/monthly_temperature_violin.png)
 
 **Interpretation:** This violin plot illustrates the distribution of 2-meter temperatures for each month. Each "violin" shows the probability density of the temperature data, with wider sections indicating more common values. This visualization effectively showcases the seasonal temperature cycle, with temperatures peaking in the summer months and reaching their lowest in the winter.
 
 #### 3. Monthly Mean Wind Speed
 
-![Monthly Wind Speed Bar Chart](plots/monthly_wind_speed_bar.png)
+[![Monthly Wind Speed Bar Chart](plots/monthly_wind_speed_bar.png)](plots/monthly_wind_speed_bar.png)
 
 **Interpretation:** This bar chart shows the average 10-meter wind speed for each month, providing a clear comparison of wind conditions throughout the year. It helps identify which months experience stronger or calmer winds on average.
 
 #### 4. Overall Wind Speed Distribution
 
-![Wind Speed Distribution](plots/wind_speed_violin.png)
+[![Wind Speed Distribution](plots/wind_speed_violin.png)](plots/wind_speed_violin.png)
 
 **Interpretation:** This violin plot summarizes the overall distribution of 10-meter wind speed throughout the year. It reveals the most frequent wind speeds and the range of observed values, which is useful for understanding the general wind climate of the region.
 
@@ -80,7 +80,7 @@ Follow these instructions to run the project on your local machine.
     ```
 
 3.  **Set up your CDS API key:**
-    Copy the `.cdsapirc.example` file to a new file named `.cdsapirc` and paste your API key into it.
+    To download data from the Copernicus Climate Data Store (CDS), you need an API key to authenticate your requests. Copy the `.cdsapirc.example` file to a new file named `.cdsapirc` (this file securely stores your credentials) and paste your API key and URL into it. You can find your API key on your CDS profile page after registration.
 
 ### Running the Pipeline
 
@@ -94,12 +94,19 @@ Follow these instructions to run the project on your local machine.
     ```
     The output plots will be saved in the `plots/` directory.
 
+---
+
+## Troubleshooting / Known Limitations
+
+*   **Separate Data Downloads for Different Variable Types:**
+    The `download_era5.py` script makes separate download requests for precipitation data (`era5_YYYY_MM_precip.nc`) and temperature/wind data (`era5_YYYY_MM_temp_wind.nc`) for each month. This is due to common limitations of the Copernicus CDS API, which often restricts combining certain variable types (e.g., accumulated fields like precipitation vs. instantaneous fields like temperature/wind) into a single request. This design ensures successful data retrieval for all required variables.
+
 ## Data Source and Citation
 
 The climate data used in this analysis is the **ERA5 hourly data on single levels from 1940 to present**, provided by the Copernicus Climate Change Service (C3S).
 
 **License:**
-This project utilizes data under the Copernicus license agreement. In accordance with the license, the source is acknowledged and attributed. Neither the European Commission nor ECMWF is responsible for any use of the Copernicus information. This is generated using Copernicus Climate Change Service information [2025].
+The ERA5 data used in this project is licensed under the [Creative Commons Attribution 4.0 International Public Licence (CC-BY 4.0)](https://creativecommons.org/licenses/by/4.0/). This allows for free use, reproduction, distribution, adaptation, and modification, with mandatory attribution to the Copernicus Climate Change Service. Neither the European Commission nor ECMWF is responsible for any use of the Copernicus information. This is generated using Copernicus Climate Change Service information [2025].
 
 **Citations:**
 When using this data, the following should be cited:
@@ -109,3 +116,35 @@ When using this data, the following should be cited:
 
 2.  **Scientific Paper:**
     > Hersbach, H., Bell, B., Berrisford, P., Hirahara, S., Horányi, A., Muñoz‐Sabater, J., ... & Simmons, A. (2020). The ERA5 global reanalysis. *Quarterly Journal of the Royal Meteorological Society*, 146(730), 1999-2049. DOI: 10.1002/qj.3803
+
+### Dataset Details
+
+The ERA5 dataset is the fifth generation ECMWF reanalysis for the global climate and weather. It combines model data with observations from across the world into a globally complete and consistent dataset using data assimilation.
+
+*   **Data Type:** Gridded
+*   **Horizontal Resolution:** 0.25° x 0.25° (atmosphere)
+*   **Temporal Coverage:** 1940 to present
+*   **Temporal Resolution:** Hourly
+*   **File Format:** GRIB
+*   **Update Frequency:** Daily (with a latency of about 5 days)
+
+### Download Parameters
+
+The `download_era5.py` script is configured to download the following specific parameters from the ERA5 dataset for the year 2024:
+
+*   **Product Type:** Reanalysis
+*   **Variables:**
+    *   2m Temperature (`2m_temperature`)
+    *   10m U-component of Wind (`10m_u_component_of_wind`)
+    *   10m V-component of Wind (`10m_v_component_of_wind`)
+    *   Total Precipitation (`total_precipitation`)
+*   **Year:** 2024
+*   **Months:** January to December (all months)
+*   **Days:** 01 to 31 (all days of each month)
+*   **Time:** Hourly (00:00 to 23:00)
+*   **Geographical Area:**
+    *   North: -30°
+    *   West: 165°
+    *   South: -50°
+    *   East: 180°
+*   **Format:** NetCDF
