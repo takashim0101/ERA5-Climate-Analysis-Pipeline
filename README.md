@@ -71,6 +71,34 @@ The following plots were generated for the **Canterbury region, New Zealand**, f
 
 [![SOM Clustering of ERA5 Climate Patterns](plots/som_era5_2024_clusters.png)](plots/som_era5_2024_clusters.png)
 
+**Interpretation:** This map illustrates the Self-Organizing Map (SOM) clustering of ERA5 climate patterns for the Canterbury region in 2024. SOMs are a powerful **unsupervised machine learning algorithm** used to identify dominant atmospheric patterns or weather regimes. By analyzing the input data without prior labels, SOM groups similar climate characteristics into distinct clusters, which are then represented by different colors on the map. This process allows for the discovery of inherent structures and relationships within complex climate data.
+
+Looking at the generated map, the following points can be confirmed:
+
+**Geographical Pattern Extraction (Spatial Features):**
+*   **Color Blocks**: The entire New Zealand region and its surrounding waters are colored with 25 different colors (clusters 0-24). This signifies that the **"character" of the annual climate in each region** has been classified.
+*   **Influence of Mountain Ranges (South Island)**: It can be observed that the colors are clearly divided along the mountain range running through the center of the South Island, with the western side (blue tones) and the eastern side (orange tones) showing distinct patterns. This suggests that westerly winds hitting the mountains cause the western side to be classified into a pattern of high rainfall and strong winds, while the eastern side is classified into a pattern of low rainfall and warmth. This is evidence that the **SOM has extracted physically meaningful climate patterns.**
+*   **Influence of Latitude and Sea Area**: Areas around the North Island and sea areas (especially the southwest) are classified into patterns different from the land (red and dark blue), capturing oceanic climate patterns.
+
+**Technical Validation:**
+*   **Dask Success**: The successful processing of nearly 700 million data points in memory proves that the large-scale geospatial data preprocessing technology using **Dask and xarray is fully functional.**
+*   **Appropriate Application of SOM**: It successfully compresses and classifies high-dimensional data of 36 features (12 months x 3 variables) into a 5x5 two-dimensional map.
+
+**Conclusion: Highly Specialized "Geo-spatial Data Science"**
+This project is positioned within **"Geo-spatial Data Science,"** a highly recognized and emerging field that merges GIS and Data Science. When presenting this experience for job applications, it demonstrates expertise in both:
+*   **Data Science**: Advanced analysis and optimization techniques using SOM and Dask.
+*   **GIS**: The ability to handle geospatial data (climate data) and present meaningful results on maps.
+
+Beyond agriculture, this methodology has broad applicability in various sectors:
+*   **Environmental Management**: Identifying regions susceptible to specific environmental risks (e.g., drought, flood, pollution patterns) for targeted intervention and policy-making.
+*   **Urban Planning**: Analyzing urban climate zones or microclimates to inform sustainable city design, energy efficiency, and public health strategies.
+*   **Disaster Preparedness**: Mapping areas prone to certain weather-related disasters to enhance early warning systems and resource allocation.
+*   **Renewable Energy**: Optimizing the placement of solar or wind farms by identifying regions with consistent and favorable climate patterns.
+
+#### 7. SOM Clustering of ERA5 Climate Patterns
+
+[![SOM Clustering of ERA5 Climate Patterns](plots/som_era5_2024_clusters.png)](plots/som_era5_2024_clusters.png)
+
 **Interpretation:** This map illustrates the Self-Organizing Map (SOM) clustering of ERA5 climate patterns for the Canterbury region in 2024. SOMs are used to identify dominant atmospheric patterns or weather regimes by grouping similar climate characteristics into distinct clusters, represented by different colors on the map.
 
 Looking at the generated map, the following points can be confirmed:
