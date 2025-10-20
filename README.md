@@ -14,18 +14,17 @@ The project operates in three simple stages:
 
 1.  **Data Acquisition:** The `download_era5.py` script connects to the Copernicus Climate Data Store (CDS) API to automatically download hourly weather data for a specified region and time period.
 
-2.  **Analysis & Visualization:** The `era5_climate_analysis.py` script processes the raw NetCDF data files, calculates key climate statistics (such as monthly mean temperatures and wind speeds), and then generates a series of plots and maps using libraries like Matplotlib and Cartopy. These visualizations provide a clear and intuitive look at the region's climate characteristics.
+2.  **Climate Statistics & Visualization:** The `era5_climate_analysis.py` script processes the raw NetCDF data files, calculates key climate statistics (such as monthly mean temperatures and wind speeds), and then generates a series of plots and maps using libraries like Matplotlib and Cartopy. These visualizations provide a clear and intuitive look at the region's climate characteristics.
+
+3.  **Advanced Pattern Analysis (SOM):** The `som_analysis.py` script performs Self-Organizing Map (SOM) analysis on the processed climate data to identify and visualize dominant climate patterns or regimes within the region.
 
 ## Key Features
 
 *   **Automated Data Download:** Fetches data directly from the official CDS API.
-
 *   **Climate Data Processing:** Handles standard scientific data formats (NetCDF).
-
 *   **Geospatial Visualization:** Creates insightful maps using Cartopy.
-
+*   **Advanced Pattern Analysis (SOM):** Utilizes Self-Organizing Maps to identify dominant climate patterns.
 *   **Statistical Plotting:** Generates violin plots and bar charts to show distributions and trends.
-
 *   **Reproducible Workflow:** The entire process is scripted for easy reproduction.
 
 ## Analysis Visualizations
@@ -96,6 +95,34 @@ Beyond agriculture, this methodology has broad applicability in various sectors:
 *   **Disaster Preparedness**: Mapping areas prone to certain weather-related disasters to enhance early warning systems and resource allocation.
 *   **Renewable Energy**: Optimizing the placement of solar or wind farms by identifying regions with consistent and favorable climate patterns.
 
+#### 7. SOM Clustering of ERA5 Climate Patterns
+
+[![SOM Clustering of ERA5 Climate Patterns](plots/som_era5_2024_clusters.png)](plots/som_era5_2024_clusters.png)
+
+**Interpretation:** This map illustrates the Self-Organizing Map (SOM) clustering of ERA5 climate patterns for the Canterbury region in 2024. SOMs are used to identify dominant atmospheric patterns or weather regimes by grouping similar climate characteristics into distinct clusters, represented by different colors on the map.
+
+Looking at the generated map, the following points can be confirmed:
+
+**Geographical Pattern Extraction (Spatial Features):**
+*   **Color Blocks**: The entire New Zealand region and its surrounding waters are colored with 25 different colors (clusters 0-24). This signifies that the **"character" of the annual climate in each region** has been classified.
+*   **Influence of Mountain Ranges (South Island)**: It can be observed that the colors are clearly divided along the mountain range running through the center of the South Island, with the western side (blue tones) and the eastern side (orange tones) showing distinct patterns. This suggests that westerly winds hitting the mountains cause the western side to be classified into a pattern of high rainfall and strong winds, while the eastern side is classified into a pattern of low rainfall and warmth. This is evidence that the **SOM has extracted physically meaningful climate patterns.**
+*   **Influence of Latitude and Sea Area**: Areas around the North Island and sea areas (especially the southwest) are classified into patterns different from the land (red and dark blue), capturing oceanic climate patterns.
+
+**Technical Validation:**
+*   **Dask Success**: The successful processing of nearly 700 million data points in memory proves that the large-scale geospatial data preprocessing technology using **Dask and xarray is fully functional.**
+*   **Appropriate Application of SOM**: It successfully compresses and classifies high-dimensional data of 36 features (12 months x 3 variables) into a 5x5 two-dimensional map.
+
+**Conclusion: Highly Specialized "Geo-spatial Data Science"**
+This project is positioned within **"Geo-spatial Data Science,"** a highly recognized and emerging field that merges GIS and Data Science. When presenting this experience for job applications, it demonstrates expertise in both:
+*   **Data Science**: Advanced analysis and optimization techniques using SOM and Dask.
+*   **GIS**: The ability to handle geospatial data (climate data) and present meaningful results on maps.
+
+Beyond agriculture, this methodology has broad applicability in various sectors:
+*   **Environmental Management**: Identifying regions susceptible to specific environmental risks (e.g., drought, flood, pollution patterns) for targeted intervention and policy-making.
+*   **Urban Planning**: Analyzing urban climate zones or microclimates to inform sustainable city design, energy efficiency, and public health strategies.
+*   **Disaster Preparedness**: Mapping areas prone to certain weather-related disasters to enhance early warning systems and resource allocation.
+*   **Renewable Energy**: Optimizing the placement of solar or wind farms by identifying regions with consistent and favorable climate patterns.
+
 ---
 
 ## Getting Started
@@ -130,9 +157,13 @@ Follow these instructions to run the project on your local machine.
     ```bash
     python download_era5.py
     ```
-2.  **Analyze the data and generate plots:**
+2.  **Analyze climate statistics and generate plots:**
     ```bash
     python era5_climate_analysis.py
+    ```
+3.  **Perform SOM analysis and generate clustering plot:**
+    ```bash
+    python som_analysis.py
     ```
     The output plots will be saved in the `plots/` directory.
 
