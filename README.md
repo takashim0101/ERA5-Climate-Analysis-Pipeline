@@ -1,197 +1,151 @@
-# WRF-ERA5 Validation & Climate Analysis
+# WRF–ERA5 Validation & Climate Analysis
 
-This project demonstrates a complete data pipeline for climate analysis,
-from data acquisition and processing to visualization. It fetches ERA5
-reanalysis data---a trusted global climate dataset---and generates
-visualizations to reveal regional climate patterns.
+This project demonstrates a complete **climate data analysis pipeline**, covering data acquisition, processing, and visualization. It uses **ERA5 reanalysis data**—a trusted global climate dataset—to reveal regional climate patterns in **Canterbury, New Zealand (2024)**.
 
-## Project Overview
+---
 
-This **experimental portfolio project** showcases an end-to-end workflow
-for climate data processing using **free and open-source ERA5 reanalysis
-data** from the Copernicus Climate Data Store. It focuses on the
-**Canterbury region, New Zealand**, analyzing data for the **year 2024**
-at **0.25° x 0.25° spatial resolution**.
+## 1. Overview
 
-The goal is to demonstrate practical data engineering and visualization
-skills, from acquisition and transformation to geospatial and
-statistical analysis. The project is designed to be informative for both
-technical and non-technical audiences.
+This **experimental portfolio project** highlights an end-to-end workflow for climate data processing using **free and open-source ERA5 reanalysis data** from the **Copernicus Climate Data Store (CDS)**.  
+The analysis focuses on the **year 2024**, at a **0.25° × 0.25°** spatial resolution, to demonstrate practical data engineering, geospatial, and visualization techniques.
 
-------------------------------------------------------------------------
+---
 
-## Pipeline Overview
+## 2. Pipeline Summary
 
-The project operates in three key stages:
+The project consists of three main stages:
 
-1.  **Data Acquisition:**\
-    The `download_era5.py` script connects to the CDS API to download
-    hourly weather data for a specified region and period.
+1. **Data Acquisition**  
+   `download_era5.py` connects to the CDS API to download hourly weather data for a specific region and time period.
 
-2.  **Climate Statistics & Visualization:**\
-    The `era5_climate_analysis.py` script processes NetCDF files,
-    computes key statistics (e.g., mean temperature, wind speed), and
-    generates visualizations using Matplotlib and Cartopy.
+2. **Climate Statistics & Visualization**  
+   `era5_climate_analysis.py` processes NetCDF files, computes key statistics (e.g., temperature, wind speed, precipitation), and generates visualizations with Matplotlib + Cartopy.
 
-3.  **Advanced Pattern Analysis (SOM):**\
-    The `som_analysis.py` script applies Self-Organizing Map (SOM)
-    analysis to detect dominant climate patterns or regimes.
+3. **Advanced Pattern Analysis (SOM)**  
+   `som_analysis.py` applies a Self-Organizing Map (SOM) to identify dominant regional climate regimes—an example of unsupervised machine learning for pattern discovery.
 
-------------------------------------------------------------------------
+---
 
-## Key Features
+## 3. Key Features
 
--   Automated data download from CDS API\
--   Processing of standard scientific formats (NetCDF)\
--   Geospatial visualization with Cartopy\
--   Advanced pattern detection using Self-Organizing Maps\
--   Violin and bar plots for climate statistics\
--   Fully reproducible scripted workflow
+- Automated data download from CDS API  
+- Standard NetCDF data processing  
+- Geospatial visualization with Cartopy  
+- SOM-based climate pattern detection  
+- Violin and bar plots for seasonal statistics  
+- Fully reproducible, script-based workflow  
 
-------------------------------------------------------------------------
+---
 
-## Analysis Visualizations
+## 4. Visual Outputs
 
-Visualizations for **Canterbury (2024)** include:
+Representative plots for **Canterbury (2024)**:
 
-1.  **Annual Mean 2m Temperature**\
-    ![Annual Mean Temperature](plots/annual_mean_temperature_map.png)\
-    Highlights temperature gradients across the region.
+| Visualization | Description |
+|----------------|-------------|
+| ![Annual Mean Temperature](plots/annual_mean_temperature_map.png) | Annual mean 2 m temperature — spatial gradients across the region |
+| ![Monthly Temperature Distribution](plots/monthly_temperature_violin.png) | Monthly temperature distributions (violin plot) showing seasonal cycles |
+| ![Monthly Wind Speed](plots/monthly_wind_speed_bar.png) | Average monthly wind speed (bar chart) |
+| ![Wind Speed Distribution](plots/wind_speed_violin.png) | Annual wind-speed variability (violin plot) |
+| ![Mean Temperature Map](plots/canterbury_mean_temp_map.png) | Coastal-to-mountain temperature contrast |
+| ![Total Precipitation](plots/canterbury_total_precip_map.png) | Annual precipitation totals — illustrating the rain-shadow effect |
+| ![SOM Clustering](plots/som_era5_2024_clusters.png) | SOM clustering of ERA5 climate patterns, revealing dominant regimes |
 
-2.  **Monthly Temperature Distribution (Violin Plot)**\
-    ![Monthly Temperature
-    Distribution](plots/monthly_temperature_violin.png)\
-    Shows seasonal cycles, with peaks in summer and lows in winter.
+---
 
-3.  **Monthly Mean Wind Speed (Bar Chart)**\
-    ![Monthly Wind Speed](plots/monthly_wind_speed_bar.png)\
-    Compares average monthly wind conditions.
-
-4.  **Overall Wind Speed Distribution (Violin Plot)**\
-    ![Wind Speed Distribution](plots/wind_speed_violin.png)\
-    Summarizes wind speed variability throughout the year.
-
-5.  **Canterbury Mean Temperature Map**\
-    ![Canterbury Mean Temperature](plots/canterbury_mean_temp_map.png)\
-    Reveals coastal--mountain temperature contrasts.
-
-6.  **Annual Total Precipitation Map**\
-    ![Canterbury Total
-    Precipitation](plots/canterbury_total_precip_map.png)\
-    Demonstrates the rain shadow effect from the Southern Alps.
-
-------------------------------------------------------------------------
-
-## Getting Started
+## 5. Getting Started
 
 ### Prerequisites
-
--   Python 3.8+\
--   Copernicus Climate Data Store account (for API credentials)
+- Python 3.8 or later  
+- CDS API account (Copernicus Climate Data Store)
 
 ### Installation
-
-``` bash
+```bash
 git clone <your-repository-url>
 cd WRF-ERA5_Validation
 pip install -r requirements.txt
 ```
 
-### Configure API Access
+### API Configuration
+Copy `.cdsapirc.example` → `.cdsapirc` and add your CDS API URL & key (available on your CDS profile).
 
-Copy `.cdsapirc.example` to `.cdsapirc`, then insert your CDS API key
-and URL (found on your CDS profile).
+---
 
-------------------------------------------------------------------------
+## 6. Running the Workflow
 
-## Running the Pipeline
+```bash
+# 1. Download ERA5 data
+python download_era5.py
 
-1.  **Download data**
+# 2. Analyze and visualize
+python era5_climate_analysis.py
 
-    ``` bash
-    python download_era5.py
-    ```
+# 3. Run SOM clustering
+python som_analysis.py
+```
 
-2.  **Analyze and visualize**
+All plots are saved under the `plots/` directory.
 
-    ``` bash
-    python era5_climate_analysis.py
-    ```
+---
 
-3.  **Run SOM clustering**
+## 7. Future Improvements
 
-    ``` bash
-    python som_analysis.py
-    ```
+- Integrate **WRF model outputs** for validation  
+- Extend analysis to additional variables (e.g., humidity, pressure)  
+- Add **interactive dashboards** (Plotly, Bokeh)  
+- Enable large-scale or cloud-based processing  
+- Automate **report generation** and archiving  
 
-    Plots are saved in the `plots/` directory.
+---
 
-------------------------------------------------------------------------
+## 8. Limitations / Notes
 
-## Future Work
+Due to CDS API constraints, data are downloaded **per month** to separate files:
 
--   Integrate WRF model outputs for validation against ERA5\
--   Extend analysis to additional variables (e.g., humidity, pressure)\
--   Add interactive dashboards (Plotly, Bokeh)\
--   Optimize for larger datasets or cloud workflows\
--   Automate report generation
+- `era5_YYYY_MM_temp_wind.nc` – temperature & wind  
+- `era5_YYYY_MM_precip.nc` – precipitation  
 
-------------------------------------------------------------------------
+This ensures consistent handling of instantaneous and accumulated fields.
 
-## Troubleshooting / Limitations
+---
 
-Due to CDS API constraints, `download_era5.py` performs separate monthly
-downloads for: \* **Temperature & Wind data:**
-`era5_YYYY_MM_temp_wind.nc` \* **Precipitation data:**
-`era5_YYYY_MM_precip.nc`\
-This ensures compatibility between instantaneous and accumulated fields.
+## 9. Data Source & Citation
 
-------------------------------------------------------------------------
+**Dataset:**  
+ERA5 Hourly Data on Single Levels (1940 – present)  
+DOI: [10.24381/cds.adbb2d47](https://doi.org/10.24381/cds.adbb2d47)
 
-## Data Source and Citation
+**Reference:**  
+Hersbach H. et al. (2020). *The ERA5 global reanalysis.*  
+*Quarterly Journal of the Royal Meteorological Society*, 146(730), 1999 – 2049.  
+DOI: [10.1002/qj.3803](https://doi.org/10.1002/qj.3803)
 
-Data from **Copernicus Climate Change Service (C3S)**:\
-\> ERA5 hourly data on single levels from 1940 to present\
-\> DOI: [10.24381/cds.adbb2d47](https://doi.org/10.24381/cds.adbb2d47)
+**License:**  
+ERA5 data © Copernicus Climate Change Service, licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
-**Scientific Reference:**\
-Hersbach, H. et al. (2020). *The ERA5 global reanalysis.* *Quarterly
-Journal of the Royal Meteorological Society*, 146(730), 1999--2049. DOI:
-[10.1002/qj.3803](https://doi.org/10.1002/qj.3803)
+---
 
-**License:**\
-ERA5 data © Copernicus Climate Change Service, licensed under [CC-BY
-4.0](https://creativecommons.org/licenses/by/4.0/).
+## 10. Dataset Summary
 
-------------------------------------------------------------------------
-
-## Dataset Summary
-
--   **Type:** Gridded reanalysis data\
--   **Resolution:** 0.25° x 0.25° (\~28 km)\
--   **Temporal Coverage:** 1940--present (hourly)\
--   **Format:** NetCDF\
--   **Region:** 30°S--50°S, 165°E--180°E\
--   **Year:** 2024
+| Attribute | Details |
+|------------|----------|
+| **Type** | Gridded reanalysis data |
+| **Resolution** | 0.25° × 0.25° (~28 km) |
+| **Temporal Coverage** | 1940 – present (hourly) |
+| **Format** | NetCDF |
+| **Region** | 30° S – 50° S, 165° E – 180° E |
+| **Year** | 2024 |
 
 ### Variables Used
+| Variable | Description | Derived Metrics |
+|-----------|--------------|-----------------|
+| 2 m Temperature | Near-surface air temperature | Annual mean, monthly distribution |
+| 10 m U/V Wind Components | Eastward & northward wind velocity | Mean speed, wind regime patterns |
+| Total Precipitation | Accumulated liquid + frozen water | Annual total, spatial distribution |
 
-  -----------------------------------------------------------------------
-  Variable           Description             Derived Metrics
-  ------------------ ----------------------- ----------------------------
-  2m Temperature     Atmospheric surface     Annual mean, monthly
-                     temperature             distributions
+---
 
-  10m U/V Wind       Eastward/northward wind Mean wind speed, wind regime
-  Components         velocity                patterns
+## 11. License (for Code)
 
-  Total              Accumulated             Annual totals, spatial
-  Precipitation      liquid/frozen water     patterns
-  -----------------------------------------------------------------------
-
-------------------------------------------------------------------------
-
-## License (for Code)
-
-All source code is released under the MIT License.\
+All source code is released under the **MIT License**.  
 See the [LICENSE](LICENSE) file for details.
