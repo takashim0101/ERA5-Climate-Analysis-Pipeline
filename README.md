@@ -19,10 +19,13 @@ The project operates in three simple stages:
 ## Key Features
 
 *   **Automated Data Download:** Fetches data directly from the official CDS API.
+
 *   **Climate Data Processing:** Handles standard scientific data formats (NetCDF).
+
 *   **Geospatial Visualization:** Creates insightful maps using Cartopy.
 
 *   **Statistical Plotting:** Generates violin plots and bar charts to show distributions and trends.
+
 *   **Reproducible Workflow:** The entire process is scripted for easy reproduction.
 
 ## Analysis Visualizations
